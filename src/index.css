@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 150 10% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 10% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 10% 15%;
+    --primary: 152 45% 28%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 60% 52%;
+    --secondary-foreground: 150 10% 15%;
+    --muted: 140 10% 95%;
+    --muted-foreground: 150 5% 45%;
+    --accent: 45 70% 55%;
+    --accent-foreground: 150 10% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 10% 90%;
+    --input: 140 10% 90%;
+    --ring: 152 45% 28%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 152 45% 28%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 140 10% 95%;
+    --sidebar-accent-foreground: 150 10% 15%;
+    --sidebar-border: 140 10% 90%;
+    --sidebar-ring: 152 45% 28%;
+    --hero-overlay: 152 45% 12%;
+    --section-alt: 140 15% 97%;
+    --gold: 45 70% 55%;
+    --gold-light: 45 60% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Hind Siliguri', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+}
+
+/* Reveal animation */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.animate-reveal {
+  animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.animate-reveal-delay-1 { animation-delay: 100ms; }
+.animate-reveal-delay-2 { animation-delay: 200ms; }
+.animate-reveal-delay-3 { animation-delay: 300ms; }
+.animate-reveal-delay-4 { animation-delay: 400ms; }
+
+/* Fade in */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero text animation */
+@keyframes hero-text-in {
+  0% { opacity: 0; transform: translateY(30px) scale(0.96); filter: blur(8px); }
+  60% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+.animate-hero-text {
+  animation: hero-text-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.animate-hero-text-delay {
+  animation: hero-text-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+/* Ticker seamless scroll */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-scroll {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 20s linear infinite;
+}
+
+/* Smooth scale on hover for cards */
+@keyframes scale-pop {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.animate-scale-pop {
+  animation: scale-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
